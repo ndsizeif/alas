@@ -1,32 +1,40 @@
 # alas
 
-alas can set your [Alacritty](https://github.com/alacritty/alarcritty) appearance.
+alas can set your [Alacritty](https://github.com/alacritty/alarcritty) scheme.
+
+![colorandfont](./assets/colorandfont.gif)
+![lists](./assets/lists.gif)
+![random](./assets/randomcolor.gif)
+![info](./assets/info.gif)
+![bell](./assets/bellcolor.gif)
 
 ## Why
 
 The Alacritty terminal emulator previous to `0.13.0` used `yaml` files for
 configuration.  There are large collections of color schemes and configuration
 files available online.  I previously used a single file to store all of my
-color schemes and used a bash script to list color schemes with simple regex
-pattern matching. I changed the active colorscheme with search/replace.
+color schemes and used a bash script to list color schemes by pattern matching.
+The active color scheme was changed using search/replace.
 
-The migration to `toml` configuration, while a definite improvement, left my
-previous strategy for colorscheme selection defunct. The built-in Alacritty
-migration tools, are effective at converting `yaml` to `toml`. But now my
-colorscheme management tools need to marshal/unmarshal `toml`, deal with
+The migration to `toml` configuration, while a <ins>definite improvement</ins>,
+left my previous strategy for color scheme selection defunct. The built-in
+Alacritty migration tools, can effectively convert `yaml` to `toml`. But now my
+color scheme management tools need to marshal/unmarshal `toml`, deal with
 duplicate keys, and covert table names.
 
-While doing this, I found there were other aspects that wanted to also
-improve along the way; supporting all Alacritty directory locations, changing
-the font, setting bell color, setting tty color strings, etc.  This utility
-can perform several basic functions an Alacritty user might want.
+While doing this, I found there were other aspects of configuration that I
+wanted to also improve; supporting all Alacritty directory locations, changing
+the font, setting bell color, setting tty color strings, etc. This utility can
+perform several basic functions an Alacritty user might want.
 
 ## Why Not
 
-Many color schemes are distributed as individual files containing a single
-colorscheme, such as `dracula.toml`. These files will use the table `[colors]`.
-In most cases, it's much less painful to simply to change the import path to the
-individual file in `alacritty.toml`. A shell script would be more than adequate.
+Many color schemes are distributed as individual files containing a single color
+scheme, such as `dracula.toml`. These files will use the table `[colors]` inside
+the file. In most cases, it's much less painful to simply change the import path
+to the individual file in `alacritty.toml` if needing to change colors. For
+Alacritty users with color scheme files organized this way, a shell script may
+be more appropriate.
 
 ## Installation
 
@@ -43,6 +51,8 @@ in your `$PATH` or run locally.
 
 <details>
     <summary>code statistics</summary>
+<br><br>
+
 ```
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
@@ -52,12 +62,14 @@ in your `$PATH` or run locally.
  Total                   8         1089          938           51          100
 ===============================================================================
 ```
+
 </details>
 
 ## Usage 
 
 <details>
     <summary>alas --help</summary>
+<br><br>
 
 ```
 Usage: alas
@@ -121,14 +133,15 @@ import = [
 
 ### Color Schemes
  
-Each colorscheme should use its own unique name for the `toml` table. This is the
-case when using the Alacritty migration tool on a yaml-based colorscheme. The
-table `[colors]` should not be used in colorscheme files, as it is used by
-Alacritty to set the active colorscheme. Doing so will return a "duplicate
+Each color scheme should use its own unique name for the `toml` table. This is the
+case when using the Alacritty migration tool on a yaml-based color scheme. The
+table `[colors]` should not be used in color scheme files, as it is used by
+Alacritty to set the active color scheme. Doing so will return a "duplicate
 table" error. 
 
 <details>
-    <summary>example colorscheme</summary>
+    <summary>example</summary>
+<br><br>
 
 ```toml
 [midboxlight.bright]
@@ -158,12 +171,13 @@ foreground = "0x3c3836"
 
 </details>
 
-Alacritty's migration tool will not automatically handle duplicate colorscheme table names.
-This can occur if a file, or multiple files have the same colorscheme, or at
-least the same colorscheme name string when converted to `toml`.
+Alacritty's migration tool will not automatically handle duplicate color scheme table names.
+This can occur if a file, or multiple files have the same color scheme, or at
+least the same color scheme name string when converted to `toml`.
 
 <details>
     <summary>file tree</summary>
+<br><br>
 
 My `$HOME/.config/alacritty/`. I have two `toml` files that contain color
 schemes `custom.toml` for those I create and `internet.toml` for others that I
@@ -185,8 +199,8 @@ subdirectory.
 ## Tips
 
 List available color schemes.  
-Pipe the colorscheme list into fzf and set the chosen scheme.  
-Pipe the colorscheme list into fzf, set the chosen scheme, preview selection.  
+Pipe the color scheme list into fzf and set the chosen scheme.  
+Pipe the color scheme list into fzf, set the chosen scheme, preview selection.  
 ```sh
 alas -l
 alas $(alas -l | fzf)
@@ -219,13 +233,19 @@ if [ "$TERM" == "linux" ]; then
 fi
 ```
 
+Apply new color scheme each day by adding a cron entry with `crontab -e`
+```
+0  3  *  *  *  /home/human/.local/bin/alas --random
+```
+
 
 ## Contributing
 
 Bug reports, or any form of constructive feedback is appreciated.
 
 <details>
-    <summary>here's a colorscheme for making all the way to the end!</summary>
+    <summary>here's a color scheme for making all the way to the end!</summary>
+<br><br>
 
 ```toml
 [Plumbus.bright]
