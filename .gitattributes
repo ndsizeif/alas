@@ -1,0 +1,4 @@
+docs/images/ export-ignore
+docs/assets/ export-ignore
+releases/ export-ignore
+.gdb_history export-ignore

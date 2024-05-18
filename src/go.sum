@@ -1,0 +1,4 @@
+github.com/cmatthias/mapstructure v1.6.0 h1:0tLH3q2gjFwQPruNiu4tR6QbTYSa1weqkH7PGaclVXY=
+github.com/cmatthias/mapstructure v1.6.0/go.mod h1:HPXojQUlVKQ/XbViHIpEbG2GjgKydy/ehhfmtiH8mQs=
+github.com/pelletier/go-toml v1.9.5 h1:4yBQzkHv+7BHq2PQUZF3Mx0IYxG7LsP222s7Agd3ve8=
+github.com/pelletier/go-toml v1.9.5/go.mod h1:u1nR/EPcESfeI/szUZKdtJ0xRNbUoANCkoOuaOx1Y+c=
