@@ -35,7 +35,7 @@ func UserInput() []string {
 			fmt.Printf("\t%s\n", UsageString[f.Name])
 		}
 		fmt.Printf("\n")
-		fmt.Printf("Example: \"%v <colorscheme>\" to apply a colorscheme\n", programName)
+		fmt.Printf("Example: \"%v <colorscheme>\" to apply a color scheme\n", programName)
 		fmt.Printf("\n")
 	}
 
@@ -224,17 +224,17 @@ func HandleFlags(bytes []byte, paths, input []string) {
 }
 
 var UsageString = map[string]string{
-	"list":   "return a list of available colorschemes",
+	"list":   "return a list of available color schemes",
 	"select": "apply <colorscheme>",
-	"random": "apply a random colorscheme",
-	"bell":   "set bell color to a base-8 color or colorscheme property",
+	"random": "apply a random color scheme",
+	"bell":   "set bell color to a base-8 color or color scheme property",
 	"print":  "return string data from <colorscheme> (no input returns current)",
 	"fonts":  "return a list of available fonts",
 	"font":   "apply <font>",
 	"help":   "print help for " + programName,
 	"clear":  "clear current color settings and use default",
-	"tty":    "convert colorscheme into sourceable shell script for tty colors",
-	"mode":   "return if colorscheme is a light or dark mode scheme",
+	"tty":    "convert color scheme into sourceable shell script for tty colors",
+	"mode":   "return if color scheme is a light or dark mode scheme",
 }
 var Shorthand = map[string]string{
 	"list":   "l",

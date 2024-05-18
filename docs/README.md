@@ -1,13 +1,13 @@
 # alas
 
-alas is a utility to set your [Alacritty](https://github.com/alacritty/alarcritty) appearance.
+alas can set your [Alacritty](https://github.com/alacritty/alarcritty) appearance.
 
 ## Why
 
 The Alacritty terminal emulator previous to `0.13.0` used `yaml` files for
-configuration.  There are large collections of colorschemes and configuration
+configuration.  There are large collections of color schemes and configuration
 files available online.  I previously used a single file to store all of my
-colorschemes and used a bash script to list colorschemes with simple regex
+color schemes and used a bash script to list color schemes with simple regex
 pattern matching. I changed the active colorscheme with search/replace.
 
 The migration to `toml` configuration, while a definite improvement, left my
@@ -16,14 +16,14 @@ migration tools, are effective at converting `yaml` to `toml`. But now my
 colorscheme management tools need to marshal/unmarshal `toml`, deal with
 duplicate keys, and covert table names.
 
-While implementing this, I found there were other aspects that wanted to also
+While doing this, I found there were other aspects that wanted to also
 improve along the way; supporting all Alacritty directory locations, changing
 the font, setting bell color, setting tty color strings, etc.  This utility
 can perform several basic functions an Alacritty user might want.
 
 ## Why Not
 
-Many colorschemes are distributed as individual files containing a single
+Many color schemes are distributed as individual files containing a single
 colorscheme, such as `dracula.toml`. These files will use the table `[colors]`.
 In most cases, it's much less painful to simply to change the import path to the
 individual file in `alacritty.toml`. A shell script would be more than adequate.
@@ -58,13 +58,15 @@ in your `$PATH` or run locally.
 
 <details>
     <summary>alas --help</summary>
+
+```
 Usage: alas
   -l, -list
-        return a list of available colorschemes
+        return a list of available color schemes
   -r, -random
-        apply a random colorscheme
+        apply a random color scheme
   -b, -bell
-        set bell color to a base-8 color or colorscheme property
+        set bell color to a base-8 color or color scheme property
   -p, -print
         return string data from <colorscheme> (no input returns current)
   -f, -font
@@ -72,15 +74,17 @@ Usage: alas
   -F, -fonts
         return a list of available fonts
   -t, -tty
-        convert colorscheme into sourceable shell script for tty colors
+        convert color scheme into sourceable shell script for tty colors
   -m, -mode
-        return if colorscheme is a light or dark mode scheme
+        return if color scheme is a light or dark mode scheme
   -x, -clear
         clear current color settings and use default
   -h, -help
         print help for alas
 
-Example: "alas <colorscheme>" to apply a colorscheme
+Example: "alas <colorscheme>" to apply a color scheme
+```
+
 </details>
 
 ### File Location
@@ -115,7 +119,7 @@ import = [
 ]
 ```
 
-### Colorschemes
+### Color Schemes
  
 Each colorscheme should use its own unique name for the `toml` table. This is the
 case when using the Alacritty migration tool on a yaml-based colorscheme. The
@@ -161,9 +165,10 @@ least the same colorscheme name string when converted to `toml`.
 <details>
     <summary>file tree</summary>
 
-My `$HOME/.config/alacritty/`. I have two `toml` files that contain colorschemes
-`custom.toml` for those I create and `internet.toml` for others that I find
-posted elsewhere. You can have any number of `toml` files in that subdirectory.
+My `$HOME/.config/alacritty/`. I have two `toml` files that contain color
+schemes `custom.toml` for those I create and `internet.toml` for others that I
+find posted elsewhere. You can have any number of `toml` files in that
+subdirectory.
 
 ```
 ├── alacritty.toml
@@ -179,7 +184,7 @@ posted elsewhere. You can have any number of `toml` files in that subdirectory.
 
 ## Tips
 
-List available colorschemes.  
+List available color schemes.  
 Pipe the colorscheme list into fzf and set the chosen scheme.  
 Pipe the colorscheme list into fzf, set the chosen scheme, preview selection.  
 ```sh
