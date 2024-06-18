@@ -73,6 +73,7 @@ func UserInput() []string {
 	cmd := flag.Args()
 
 	if help {
+		fmt.Println("HLP")
 		flag.Usage()
 		os.Exit(0)
 	}

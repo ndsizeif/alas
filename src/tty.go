@@ -48,14 +48,14 @@ func StringsToScript(colors []string) ([]byte, error) {
 	for key, color := range colors {
 		var entry string
 		if color == "" && key < 8 { // cancel if normal colors are not present
-			return nil, errors.New("color %v is invalid")
+			return nil, errors.New(fmt.Sprintf("color %v is invalid", color))
 		}
 		if color == "" && key > 7 { // if bright colors are not present, use normal
-			label = strings.Replace(color, "#", prefix[key-8], 1)
-			label = strings.Replace(color, "0x", prefix[key-8], 1)
+			label = strings.Replace(color, "#", prefix[key-8], -1)
+			label = strings.Replace(label, "0x", prefix[key-8], -1)
 		} else {
-			label = strings.Replace(color, "#", prefix[key], 1)
-			label = strings.Replace(color, "0x", prefix[key], 1)
+			label = strings.Replace(color, "#", prefix[key], -1)
+			label = strings.Replace(label, "0x", prefix[key], -1)
 		}
 		entry = fmt.Sprintf("echo -en \"\\e]%v\"", label)
 
